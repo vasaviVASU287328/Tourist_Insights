@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Resources</title>
+</head>
+<body>
+    <h1>Recommended Resources</h1>
+    <ul>
+        {% for resource in resources %}
+            <li>
+                <strong>Resource Name:</strong> {{ resource['resource_name'] }}<br>
+                <strong>Type of Resource:</strong> {{ resource['resource_type'] }}<br>
+                <strong>State:</strong> {{ resource['state'] }}<br>
+                <strong>Resource Access Link:</strong> <a href="{{ resource['resource_access_link'] }}">{{ resource['resource_access_link'] }}</a><br>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('purchase_resource') }}">Back to Purchase Resource</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Places</title>
+</head>
+<body>
+    <h1>Recommended Places</h1>
+    <ul>
+        {% for place in places %}
+            <li>
+                <strong>Place:</strong> {{ place['place_name'] }}<br>
+                <strong>Type of Place:</strong> {{ place['place_type'] }}<br>
+                <strong>State:</strong> {{ place['state'] }}<br>
+                <strong>Direction in India:</strong> {{ place['direction'] }}<br>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('get_travel_plan') }}">Back to Get Travel Plan</a>
+</body>
+</html>

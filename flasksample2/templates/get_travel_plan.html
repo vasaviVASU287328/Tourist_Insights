@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Travel Plan</title>
+</head>
+<body>
+    <h1>Get Travel Plan</h1>
+    <form method="POST" action="{{ url_for('get_travel_plan') }}">
+        <label for="direction">Direction:</label>
+        <input type="text" id="direction" name="direction" required><br>
+
+        <label for="place_type">Place Type:</label>
+        <input type="text" id="place_type" name="place_type" required><br>
+
+        <input type="submit" value="Get Plan">
+    </form>
+</body>
+</html>

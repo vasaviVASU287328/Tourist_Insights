@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allocated Resources</title>
+</head>
+<body>
+    <h1>Allocated Resources</h1>
+    {% if resources %}
+        <ul>
+            {% for resource in resources %}
+                <li>
+                    <strong>Resource Name:</strong> {{ resource['resource_name'] }}<br>
+                    <strong>State:</strong> {{ resource['state'] }}<br>
+                    <strong>Resource Access Link:</strong> <a href="{{ resource['resource_access_link'] }}">{{ resource['resource_access_link'] }}</a><br>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <a href="{{ url_for('view_allocated_resources') }}">Refresh</a>
+</body>
+</html>

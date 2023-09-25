@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Resource</title>
+</head>
+<body>
+    <h1>Purchase Resource</h1>
+    <form method="POST" action="{{ url_for('purchase_resource') }}">
+        <label for="resource_type">Resource Type:</label>
+        <input type="text" id="resource_type" name="resource_type" required><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br>
+
+        <input type="submit" value="Purchase">
+    </form>
+</body>
+</html>
