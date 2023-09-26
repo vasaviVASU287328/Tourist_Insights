@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/tourist">Tourist</a></li>
+            <li><a href="/stakeholder">Stakeholder</a></li>
+        </ul>
+    </nav>
+
+    <h1>Welcome to the Home Page</h1>
+
+    <section id="tourist">
+        <h2>Tourist</h2>
+        <nav>
+            <ul>
+                <li><a href="/travelplan">Travel Plan</a></li>
+                <li><a href="/purchase_resource">Consult Service</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section id="stakeholder">
+        <h2>Stakeholder</h2>
+        <nav>
+            <ul>
+                <li><a href="/upload_resource">Upload Resource</a></li>
+                <li><a href="/view_resource">View Resource</a></li>
+                <li><a href="/delete_resource">Delete Resource</a></li>
+            </ul>
+        </nav>
+    </section>
+</body>
+</html>

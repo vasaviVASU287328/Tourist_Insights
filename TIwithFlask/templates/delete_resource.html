@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Resources</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/">Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <h1>Delete Resources</h1>
+
+    <h2>Your Resources:</h2>
+    <form method="post" action="/delete_resource">
+        <ul>
+            {% for resource in resources %}
+                <li>
+                    <input type="checkbox" name="resource_to_delete" value="{{ resource.resource_name }}">
+                    {{ resource.resource_name }}
+                    <button type="submit" name="delete_button" value="{{ resource.resource_name }}">Delete</button>
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Delete Selected">
+    </form>
+</body>
+</html>

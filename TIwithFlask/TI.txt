@@ -1,0 +1,27 @@
+i want a html page index.html to be initially executed by python .
+containing a navigation bar [ home , about , contact , login ].
+if i click on login it should open a new login.html page in this there should ask [ username/email , password ] and login button followed by horizontal line then followed by signup button.
+when after entering values then login button can be clicked.
+when login button is clicked then check the csv file user.csv the matching exist then navigate to home.html , if dosent exist then prompt that wrong password or weong username or wrong email.
+
+otherwise if signup button is clicked then navigate to signup.html in this [ for signup ask full name , username , email , password , confirm password] after this the fields are evaluated by python code wether username contain both letters and digits but not any special characters and checks weather the email is in correct format also checks that password has atleast one uppercase letter ,maximum length is 8 ,contains special character(@),digits . if exists then move to another home.html page
+
+in home.html ask a question to choose one [tourist and stakeholder].
+if tourist is selected move to tourist.html
+if stakeholder is selected move to stakeholder.html
+
+in tourist.html ask a question to choose travel plan or consult service.
+if travel plan is selected then ask questions
+1. direction of state in india(north,south,west,east,northeast,northwest,southeast,southwest) any one?
+2. type of place(hill,costal,cultural,historic,hotel,resort) any one?
+based on the answer of this question ,analysis the places.csv that contains [ direction , state , type , place name]  using python . and display all the records that are matched in places.html page.
+
+if consult service is selected then ask a question what you need (dialy need or food or room ) then compare with the resourse.csv if matched then display all matched records in resource.html page.
+
+in stakeholder.html page ask question to choose [upload resource or view already uploded  resource ]
+if upload resource is selected then move to upload.html page and ask for [ resource name, type of resource , resource access link] followed by confim button and cancel button. 
+--if confirm is clicked then load the three details into resource.csv and also to user personal csv file my_resource.csv
+-- if cancel is clicked then go to stakeholder.html page.
+if view already uploded resources is selected then move to view.html page and show all the resource that this user uploded which is stored in my_resource.csv . that display is viewed in the form of check box then if delete
+button is pressed then the selected resources will be deleted from the resourse.csv and also from my_resource.csv.
+while viewing each resource holdes a count value of how many times this resource is matched while analysing. 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Resources</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/">Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <h1>View Resources</h1>
+
+    <h2>Your Resources:</h2>
+    <ul>
+        {% for resource_name in resource_names %}
+            <li>{{ resource_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
