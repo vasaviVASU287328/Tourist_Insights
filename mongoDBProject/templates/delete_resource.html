@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Resources</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url("https://img.freepik.com/premium-photo/blue-abstract-defocused-background-psychology-mental-health-concepts_87555-19093.jpg");
+            baground-repeat:no-repeat;
+            baground-size:cover;
+            margin: 0;
+            padding: 0;
+        }
+        /* Style the form container */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the form header */
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Style the list of resources */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Style list items */
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Style the checkbox */
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for the submit button */
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="signup.html">Signout</a></li>
+        </ul>
+    </nav>
+
+    <h1>Delete Resources</h1>
+
+    <form method="post" action="/delete_resource">
+        <h2>User Resources</h2>
+        <ul>
+            {% for resource_name in user_resources %}
+                <li>
+                    <input type="checkbox" name="resource_to_delete" value="{{ resource_name }}">
+                    {{ resource_name }}
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Delete Selected Resources">
+    </form>
+</body>
+</html>

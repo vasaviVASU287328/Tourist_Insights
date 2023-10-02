@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Resource</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url("https://img.freepik.com/premium-photo/blue-abstract-defocused-background-psychology-mental-health-concepts_87555-19093.jpg");
+            baground-repeat:no-repeat;
+            baground-size:cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home" style="color:white">Home</a></li>
+            <li><a href="/" style="color:white">Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <h1>Upload Resource</h1>
+
+    <form method="post" action="/upload_resource">
+        <label for="resource_name">Resource Name:</label>
+        <input type="text" id="resource_name" name="resource_name" required>
+
+        <label for="state">Select a State:</label>
+        <select name="state" id="state">
+            <option value="All States">All States</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+
+        <label for="resource_type">Type of Resource:</label>
+        <select id="resource_type" name="resource_type">
+            <option value="daily_need">Daily Need</option>
+            <option value="food">Food</option>
+            <option value="room">Room</option>
+        </select>
+
+        <label for="resource_link">Resource Access Link:</label>
+        <input type="text" id="resource_link" name="resource_link" required>
+        <label for="image_link">Resource image link:</label>
+        <input type="text" id="image_link" name="image_link" required>
+        <input type="submit" value="Submit" id="submit_button" disabled>
+    </form>
+
+    <script>
+        // Enable submit button when all required fields are filled
+        document.querySelector("form").addEventListener("input", function () {
+            const resource_name = document.getElementById("resource_name").value;
+            const resource_link = document.getElementById("resource_link").value;
+            if (resource_name && resource_link) {
+                document.getElementById("submit_button").disabled = false;
+            } else {
+                document.getElementById("submit_button").disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

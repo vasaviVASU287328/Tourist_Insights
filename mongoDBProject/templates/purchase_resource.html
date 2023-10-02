@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Resource</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add custom styles here */
+        body {
+          font-family: Arial, sans-serif;
+          background-image:url("https://img.freepik.com/premium-photo/blue-abstract-defocused-background-psychology-mental-health-concepts_87555-19093.jpg");
+          baground-repeat:no-repeat;
+          baground-size:cover;
+          margin: 0;
+          padding: 0;
+      }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin: 0;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 4px;
+        }
+  
+        section h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+  
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+  
+        section ul li {
+            margin-bottom: 10px;
+        }
+  
+        section ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+  
+        section ul li a:hover {
+            color: #555;
+        }
+          /* The side navigation menu */  
+          .sidenav {  
+            height: 100%; /* 100% Full-height */  
+            width: 0; /* 0 width - change this with JavaScript */  
+            position: fixed; /* Stay in place */  
+            z-index: 1; /* Stay on top */  
+            top: 0;  
+            left: 0;  
+            background-color: #bb99ff; /* violet*/  
+            overflow-x: hidden; /* Disable horizontal scroll */  
+            padding-top: 60px; /* Place content 60px from the top */  
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */  
+        }  
+        /* The navigation menu links */  
+        .sidenav a {  
+            padding: 8px 8px 8px 32px;  
+            text-decoration: none;  
+            font-size: 25px;  
+            font-family: Gotham;  
+            color: #000000;  
+            display: block;  
+            transition: 0.3s  
+        }  
+        /* When you mouse over the navigation links, change their color */  
+        .sidenav a:hover, .offcanvas a:focus{  
+            color: #f1f1f1;  
+        }  
+        /* Position and style the close button (top right corner) */  
+        .sidenav .closebtn {  
+            position: absolute;  
+            top: 0;  
+            right: 25px;  
+            font-size: 36px;  
+            margin-left: 50px;  
+        }  
+        /* Style page content - use this if you want to push the page content to the right when you open the side navigation */  
+        #main {  
+            transition: margin-left .5s;  
+            padding: 20px;  
+        }  
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */  
+        @media screen and (max-height: 450px) {  
+            .sidenav {padding-top: 15px;}  
+            .sidenav a {font-size: 18px;}  
+        }  
+          article {
+              --img-scale: 1.001;
+              --title-color: black;
+              --link-icon-translate: -20px;
+              --link-icon-opacity: 0;
+              position: relative;
+              border-radius: 16px;
+              box-shadow: none;
+              background: ff0066;
+              transform-origin: center;
+              transition: all 0.4s ease-in-out;
+              overflow: hidden;
+            }
+            
+            article a::after {
+              position: absolute;
+              inset-block: 0;
+              inset-inline: 0;
+              cursor: pointer;
+              content: "";
+            }
+            
+            /* basic article elements styling */
+            article h2 {
+              margin: 0 0 18px 0;
+              font-family: "Bebas Neue", cursive;
+              font-size: 1.9rem;
+              letter-spacing: 0.06em;
+              color: var(--title-color);
+              transition: color 0.3s ease-out;
+            }
+            
+            figure {
+              margin: 0;
+              padding: 0;
+              aspect-ratio: 16 / 9;
+              overflow: hidden;
+            }
+            
+            article img {
+              max-width: 100%;
+              transform-origin: center;
+              transform: scale(var(--img-scale));
+              transition: transform 0.4s ease-in-out;
+            }
+            
+            .article-body {
+              padding: 24px;
+            }
+            
+            article a {
+              display: inline-flex;
+              align-items: center;
+              text-decoration: none;
+              color: #28666e;
+            }
+            
+            article a:focus {
+              outline: 1px dotted #28666e;
+            }
+            
+            article a .icon {
+              min-width: 24px;
+              width: 24px;
+              height: 24px;
+              margin-left: 5px;
+              transform: translateX(var(--link-icon-translate));
+              opacity: var(--link-icon-opacity);
+              transition: all 0.3s;
+            }
+            
+            /* using the has() relational pseudo selector to update our custom properties */
+            article:has(:hover, :focus) {
+              --img-scale: 1.1;
+              --title-color: #28666e;
+              --link-icon-translate: 0;
+              --link-icon-opacity: 1;
+              box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            }
+            
+            
+            /************************ 
+            Generic layout (demo looks)
+            **************************/
+            
+            *,
+            *::before,
+            *::after {
+              box-sizing: border-box;
+            }
+            
+            
+            .articles {
+              display: grid;
+              max-width: 1200px;
+              margin-inline: auto;
+              padding-inline: 24px;
+              grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+              gap: 24px;
+            }
+            
+            @media screen and (max-width: 960px) {
+              article {
+                container: card/inline-size;
+              }
+              .article-body p {
+                display: none;
+              }
+            }
+            
+            @container card (min-width: 380px) {
+              .article-wrapper {
+                display: grid;
+                grid-template-columns: 100px 3fr;
+                gap: 16px;
+              }
+              .article-body {
+                padding-left: 0;
+              }
+              figure {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+              }
+              figure img {
+                height: 100%;
+                width:1000px;
+                aspect-ratio: 1;
+                object-fit: cover;
+              }
+            }
+            
+            .sr-only:not(:focus):not(:active) {
+              clip: rect(0 0 0 0); 
+              clip-path: inset(50%);
+              height: 1px;
+              overflow: hidden;
+              position: absolute;
+              white-space: nowrap; 
+              width: 1px;
+            }
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/home">Home</a>
+        <a href="/travelplan">Travel Plan</a>
+        <a href="/">Signout</a>
+        </div>
+        <!-- Use any element to open the sidenav -->
+        <span onclick="openNav()"><img src="https://www.svgrepo.com/show/126206/menu.svg" width="40px" style="padding-top: 40px; padding-left: 40px; border:2%"></span>
+        <div id="main">
+        </div>
+
+    <h1>Purchase Resource</h1>
+
+    <form method="post" action="/purchase_resource">
+        <label for="state">In which state of India are you?</label>
+        <select id="state" name="state">
+            <option value="all_states">All India States</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+
+        <label for="resource_type">What do you need?</label>
+        <select id="resource_type" name="resource_type">
+            <option value="daily_need">Daily Need</option>
+            <option value="food">Food</option>
+            <option value="room">Room</option>
+        </select>
+
+        <input type="submit" value="Search">
+    </form>
+
+    {% if resources %}
+    <h2>Matching Resources</h2>
+    <ul>
+      <section class= "article">
+        {% for resource in resources %}
+        <article>
+            <div class="article-wrapper">
+              <figure>
+                <img src="{{resource.image_link}}" alt="{{resource.resource_link}}" />
+              </figure>
+              <div class="article-body">
+                <h2><a href="{{resource.resource_link}}">{{resource.resource_name}}</a></h2>
+                <a href="{{resource.resource_link}}" class="read-more">
+                  View Service <span class="sr-only">purchase</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+        </section>
+    </ul>
+    {% endif %}
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "300px";
+        }
+            /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>

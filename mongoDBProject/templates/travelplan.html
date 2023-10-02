@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Plan</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add custom styles here */
+        body {
+          font-family: Arial, sans-serif;
+          background-image:url("https://img.freepik.com/premium-photo/blue-abstract-defocused-background-psychology-mental-health-concepts_87555-19093.jpg");
+          baground-repeat:no-repeat;
+          baground-size:cover;
+          margin: 0;
+          padding: 0;
+      }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin: 0;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        article {
+            --img-scale: 1.001;
+            --title-color: black;
+            --link-icon-translate: -20px;
+            --link-icon-opacity: 0;
+            position: relative;
+            border-radius: 16px;
+            box-shadow: none;
+            background: ff0066;
+            transform-origin: center;
+            transition: all 0.4s ease-in-out;
+            overflow: hidden;
+          }
+          
+          article a::after {
+            position: absolute;
+            inset-block: 0;
+            inset-inline: 0;
+            cursor: pointer;
+            content: "";
+          }
+          
+          /* basic article elements styling */
+          article h2 {
+            margin: 0 0 18px 0;
+            font-family: "Bebas Neue", cursive;
+            font-size: 1.9rem;
+            letter-spacing: 0.06em;
+            color: var(--title-color);
+            transition: color 0.3s ease-out;
+          }
+          
+          figure {
+            margin: 0;
+            padding: 0;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+          }
+          
+          article img {
+            max-width: 100%;
+            transform-origin: center;
+            transform: scale(var(--img-scale));
+            transition: transform 0.4s ease-in-out;
+          }
+          
+          .article-body {
+            padding: 24px;
+          }
+          
+          article a {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #28666e;
+          }
+          
+          article a:focus {
+            outline: 1px dotted #28666e;
+          }
+          
+          article a .icon {
+            min-width: 24px;
+            width: 24px;
+            height: 24px;
+            margin-left: 5px;
+            transform: translateX(var(--link-icon-translate));
+            opacity: var(--link-icon-opacity);
+            transition: all 0.3s;
+          }
+          
+          /* using the has() relational pseudo selector to update our custom properties */
+          article:has(:hover, :focus) {
+            --img-scale: 1.1;
+            --title-color: #28666e;
+            --link-icon-translate: 0;
+            --link-icon-opacity: 1;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+          }
+          
+          
+          /************************ 
+          Generic layout (demo looks)
+          **************************/
+          
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+          
+          
+          .articles {
+            display: grid;
+            max-width: 1200px;
+            margin-inline: auto;
+            padding-inline: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+          }
+          
+          @media screen and (max-width: 960px) {
+            article {
+              container: card/inline-size;
+            }
+            .article-body p {
+              display: none;
+            }
+          }
+          
+          @container card (min-width: 380px) {
+            .article-wrapper {
+              display: grid;
+              grid-template-columns: 100px 1fr;
+              gap: 16px;
+            }
+            .article-body {
+              padding-left: 0;
+            }
+            figure {
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+            }
+            figure img {
+              height: 100%;
+              aspect-ratio: 1;
+              object-fit: cover;
+            }
+          }
+          
+          .sr-only:not(:focus):not(:active) {
+            clip: rect(0 0 0 0); 
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap; 
+            width: 1px;
+          }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/">Sign Out</a></li>
+        </ul>
+    </nav>
+    <h1><a href="/add_place">Add a New Place</a></h1>
+    <hr>
+    <h1>Travel Plan</h1>
+
+    <form method="post" action="/travelplan">
+        <label for="direction">Direction of State in India:</label>
+        <select id="direction" name="direction">
+            <option value="North">North</option>
+            <option value="South">South</option>
+            <option value="West">West</option>
+            <option value="East">East</option>
+            <option value="Central">Central</option>
+            <option value="Northeast">Northeast</option>
+            <option value="Northwest">Northwest</option>
+            <option value="Southeast">Southeast</option>
+            <option value="Southwest">Southwest</option>
+        </select>
+
+        <label for="place_type">Type of Place:</label>
+        <select id="place_type" name="place_type">
+            <option value="Hill Station">Hill Station</option>
+            <option value="City">City</option>
+            <option value="Historical Site">Historical Site</option>
+            <option value="Religious Site">Religious Site</option>
+            <option value="Town">Town</option>
+            <option value="Beach Town">Beach Town</option>
+            <option value="National Park">National Park</option>
+            <option value="Museum">Museum</option>
+            <option value="Garden">Garden</option>
+            <option value="Waterfall">Waterfall</option>
+            <option value="Valley">Valley</option>
+            <option value="Hill Station and Adventure Destination">Hill Station and Adventure Destination</option>
+            <option value="Village">Village</option>
+            <option value="Cave">Cave</option>
+            <option value="Archaeological Park">Archaeological Park</option>
+            <option value="Archaeological Site">Archaeological Site</option>
+            <option value="Beach">Beach</option>
+            <option value="Adventure Destination">Adventure Destination</option>
+            <option value="Wildlife Sanctuary">Wildlife Sanctuary</option>
+            <option value="Research Center">Research Center</option>
+            <option value="Zoo and Botanical Garden">Zoo and Botanical Garden</option>
+            <option value="Dam">Dam</option>
+            <option value="Lake">Lake</option>
+            <option value="Zoo">Zoo</option>
+            <option value="Art and Craft Village">Art and Craft Village</option>
+            <option value="Art Museum">Art Museum</option>
+            <option value="Palace">Palace</option>
+            <option value="Bridge">Bridge</option>
+            <option value="Dam, Lake, and National Park">Dam, Lake, and National Park</option>
+            <option value="Lake and Zoo">Lake and Zoo</option>
+            <option value="Mountain Pass">Mountain Pass</option>
+            <option value="Mountain Pass and Hill Station">Mountain Pass and Hill Station</option>
+            <option value="War Memorial">War Memorial</option>
+            <option value="Hill Station and Lake">Hill Station and Lake</option>
+            <option value="Lake and National Park">Lake and National Park</option>
+            <option value="Lake and Hill Station">Lake and Hill Station</option>
+            <option value="Lake, Hill Station, and City">Lake, Hill Station, and City</option>
+            <option value="Lake, Hill Station, and Historical Monument">Lake, Hill Station, and Historical Monument</option>
+            <option value="Mountain Pass, Hill Station, and Valley">Mountain Pass, Hill Station, and Valley</option>
+            <option value="National Park and Wildlife Sanctuary">National Park and Wildlife Sanctuary</option>
+            <option value="Historical Monument">Historical Monument</option>
+            <option value="Natural Attraction">Natural Attraction</option>
+            <option value="Tourist Attraction">Tourist Attraction</option>
+            <option value="Dam and National Park">Dam and National Park</option>
+            <option value="Lake and Dam">Lake and Dam</option>
+            <option value="Lake and Mountain Pass">Lake and Mountain Pass</option>
+            <option value="Lake and Bridge">Lake and Bridge</option>
+            <option value="Lake and Garden">Lake and Garden</option>
+            <option value="Lake and Cave">Lake and Cave</option>
+            <option value="Hill Station, National Park, and Adventure Destination">Hill Station, National Park, and Adventure Destination</option>
+            <option value="National Park and Hill Station">National Park and Hill Station</option>
+            <option value="Hill Station and Historical Monument">Hill Station and Historical Monument</option>
+            <option value="Hill Station, Lake, and Historical Monument">Hill Station, Lake, and Historical Monument</option>
+            <option value="Lake and Adventure Destination">Lake and Adventure Destination</option>
+            <option value="Hill Station, Adventure Destination, and Natural Attraction">Hill Station, Adventure Destination, and Natural Attraction</option>
+        </select>
+
+        <input type="submit" value="Search">
+    </form>
+    <h2>Matching Places:</h2>
+    <ul>
+        <section class="articles">
+        {% for place in places %}
+            <article>
+              <div class="article-wrapper">
+                <figure>
+                  <img src="{{place.image_link}}" alt="{{place.place_name}}" />
+                </figure>
+                <div class="article-body">
+                  <h2><a href="{{place.location_link}}">{{place.place_name}}</a></h2>
+                  <p>
+                  </p>
+                  <a href="{{place.location_link}}" class="read-more">
+                    Lets Go <span class="sr-only">Travel Through</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+        {% endfor %}
+        </section>
+    </ul>
+</body>
+</html>

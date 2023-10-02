@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parkahan</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url("https://img.freepik.com/premium-photo/blue-abstract-defocused-background-psychology-mental-health-concepts_87555-19093.jpg");
+            baground-repeat:no-repeat;
+            baground-size:cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        section {
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        section h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+        }
+
+        section ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        section ul li a:hover {
+            color: #555;
+        }
+        /* The side navigation menu */  
+        .sidenav {  
+            height: 100%; /* 100% Full-height */  
+            width: 0; /* 0 width - change this with JavaScript */  
+            position: fixed; /* Stay in place */  
+            z-index: 1; /* Stay on top */  
+            top: 0;  
+            left: 0;  
+            background-color: #bb99ff; /* violet*/  
+            overflow-x: hidden; /* Disable horizontal scroll */  
+            padding-top: 60px; /* Place content 60px from the top */  
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */  
+        }  
+        /* The navigation menu links */  
+        .sidenav a {  
+            padding: 8px 8px 8px 32px;  
+            text-decoration: none;  
+            font-size: 25px;  
+            font-family: Gotham;  
+            color: #000000;  
+            display: block;  
+            transition: 0.3s  
+        }  
+        /* When you mouse over the navigation links, change their color */  
+        .sidenav a:hover, .offcanvas a:focus{  
+            color: #f1f1f1;  
+        }  
+        /* Position and style the close button (top right corner) */  
+        .sidenav .closebtn {  
+            position: absolute;  
+            top: 0;  
+            right: 25px;  
+            font-size: 36px;  
+            margin-left: 50px;  
+        }  
+        /* Style page content - use this if you want to push the page content to the right when you open the side navigation */  
+        #main {  
+            transition: margin-left .5s;  
+            padding: 20px;  
+        }  
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */  
+        @media screen and (max-height: 450px) {  
+            .sidenav {padding-top: 15px;}  
+            .sidenav a {font-size: 18px;}  
+        }  
+    </style>
+</head>
+<body >
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+        </div>
+        <!-- Use any element to open the sidenav -->
+        <span onclick="openNav()"><img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png" width="40px" style="padding-top: 40px; padding-left: 40px;"></span>
+        <div id="main">
+        </div>
+    
+    <section id="home">
+        <h2 style="text-align:center">PARKAHAN</h2>
+        <p>Discover the hidden gems of State Name Explore our state's breathtaking tourist attractions and embark on unforgettable adventures. <br>
+            Explore comprehensive profiles of travel destinations, including insights into must-visit attractions, cultural experiences, local cuisine, and historical significance.
+            Discover hidden gems and off-the-beaten-path destinations to add an adventurous twist to your travel plans.
+        </p>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed justo ac odio interdum varius.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <ul>
+            <li><a href="https://www.google.com">Instagram</a></li>
+            <li><a href="https://www.google.com">twiter</a></li>
+            <li><a href="https://www.google.com">facebook</a></li>
+        </ul>
+    </section>
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "300px";
+            }
+            /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            }
+    </script>
+</body>
+</html>
